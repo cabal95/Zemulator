@@ -7,9 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "TCPServer.h"
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController <CBPeripheralManagerDelegate, NSTableViewDataSource, TCPServerDelegate>
 
+- (void)clearLabels;
+- (void)updateLabelWidth:(CGFloat)width height:(CGFloat)height;
 
 @end
 

@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,45 +674,185 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider=""/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="72" y="-693"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                <windowController id="B8D-0N-5wS" customClass="WindowController" sceneMemberID="viewController">
+                    <window key="window" title="Zebra Emulator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-			<connections>
+                        <toolbar key="toolbar" implicitIdentifier="00E8FC3B-F7D6-43D7-8825-0CDAF3D8493B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="N1V-Yx-GhD">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="3bE-EY-3HD"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="3SP-HV-vQc"/>
+                                <toolbarItem implicitItemIdentifier="4B95C7D7-B5C0-4D1F-AC91-B508726D024A" label="Clear Labels" paletteLabel="Clear Labels" tag="-1" image="NSTrashEmpty" id="Mu7-P2-YbQ">
+                                    <connections>
+                                        <action selector="btnClearLabels:" target="B8D-0N-5wS" id="4qC-Sb-7ht"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="8E487A0B-1269-4C8D-91ED-07C7272ED52F" label="Label Width" paletteLabel="Label Width" id="N44-h8-AEI">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="100" height="28"/>
+                                    <size key="maxSize" width="100" height="28"/>
+                                    <popUpButton key="view" verticalHuggingPriority="750" id="a6H-4j-jHU">
+                                        <rect key="frame" x="0.0" y="14" width="100" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <popUpButtonCell key="cell" type="roundTextured" title="2.00&quot;" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="t19-M8-CrX" id="HRC-NN-Z4E">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" id="rfV-RZ-9lu">
+                                                <items>
+                                                    <menuItem title="2.00&quot;" state="on" id="t19-M8-CrX"/>
+                                                    <menuItem title="2.25&quot;" id="Ms9-OI-iBW"/>
+                                                    <menuItem title="2.50&quot;" id="XDB-Gw-pp5"/>
+                                                    <menuItem title="2.75&quot;" id="dOJ-iL-4lB"/>
+                                                    <menuItem title="3.00&quot;" id="E21-gP-UAi"/>
+                                                    <menuItem title="3.25&quot;" id="DXI-AE-unI"/>
+                                                    <menuItem title="3.50&quot;" id="9aa-HE-q6u"/>
+                                                    <menuItem title="3.75&quot;" id="1Gf-2o-50Z"/>
+                                                    <menuItem title="4.00&quot;" id="5rn-wH-qsz"/>
+                                                    <menuItem title="4.25&quot;" id="cPY-nd-hQU"/>
+                                                    <menuItem title="4.50&quot;" id="AcP-5a-tgg"/>
+                                                    <menuItem title="4.75&quot;" id="tFX-L9-2Qs"/>
+                                                    <menuItem title="5.00&quot;" id="HZ0-9V-uKU"/>
+                                                    <menuItem title="5.25&quot;" id="a16-nN-jPa"/>
+                                                    <menuItem title="5.50&quot;" id="ZeU-yg-vac"/>
+                                                    <menuItem title="5.75&quot;" id="htC-0q-WUq"/>
+                                                    <menuItem title="6.00&quot;" id="9bD-wH-eI0"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                    </popUpButton>
+                                    <connections>
+                                        <action selector="updateLabelSize:" target="B8D-0N-5wS" id="Yd6-lI-wKU"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="86FB5DDB-012D-41C3-B56C-8528AABE6F0A" label="Label Height" paletteLabel="Label Height" id="Td7-Qq-66g">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="100" height="28"/>
+                                    <size key="maxSize" width="100" height="28"/>
+                                    <popUpButton key="view" verticalHuggingPriority="750" id="Vnw-P9-xfT">
+                                        <rect key="frame" x="0.0" y="14" width="100" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <popUpButtonCell key="cell" type="roundTextured" title="2.00&quot;" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="A9q-vv-cEc" id="lHE-CA-GHv">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" id="WtQ-6z-rbd">
+                                                <items>
+                                                    <menuItem title="2.00&quot;" state="on" id="A9q-vv-cEc"/>
+                                                    <menuItem title="2.25&quot;" id="vJ7-bL-vG7"/>
+                                                    <menuItem title="2.50&quot;" id="7FC-r1-MHb"/>
+                                                    <menuItem title="2.75&quot;" id="hdj-JC-2mO"/>
+                                                    <menuItem title="3.00&quot;" id="c1K-Bi-2DB"/>
+                                                    <menuItem title="3.25&quot;" id="U9Q-j5-bNo"/>
+                                                    <menuItem title="3.50&quot;" id="ZBx-ry-I6G"/>
+                                                    <menuItem title="3.75&quot;" id="S8f-bH-jhq"/>
+                                                    <menuItem title="4.00&quot;" id="nam-4l-IJN"/>
+                                                    <menuItem title="4.25&quot;" id="WzW-ov-mI9"/>
+                                                    <menuItem title="4.50&quot;" id="1ED-A1-OSY"/>
+                                                    <menuItem title="4.75&quot;" id="W5Y-KE-rRi"/>
+                                                    <menuItem title="5.00&quot;" id="vtj-GI-j7Z"/>
+                                                    <menuItem title="5.25&quot;" id="YGT-Ye-6Yz"/>
+                                                    <menuItem title="5.50&quot;" id="ap7-mw-fLc"/>
+                                                    <menuItem title="5.75&quot;" id="eJU-xE-Ei6"/>
+                                                    <menuItem title="6.00&quot;" id="Jwj-TW-uWN"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                    </popUpButton>
+                                    <connections>
+                                        <action selector="updateLabelSize:" target="B8D-0N-5wS" id="jAi-yu-Nbx"/>
+                                    </connections>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="Mu7-P2-YbQ"/>
+                                <toolbarItem reference="3SP-HV-vQc"/>
+                                <toolbarItem reference="N44-h8-AEI"/>
+                                <toolbarItem reference="Td7-Qq-66g"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                        <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="heightMenuCell" destination="lHE-CA-GHv" id="QHX-D2-KBZ"/>
+                        <outlet property="widthMenuCell" destination="HRC-NN-Z4E" id="u0g-Ns-bg3"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="102" y="-227"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="202" horizontalPageScroll="10" verticalLineScroll="202" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7O-wL-ztt">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <clipView key="contentView" ambiguous="YES" id="sQQ-To-TEe">
+                                    <rect key="frame" x="1" y="1" width="478" height="478"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="200" id="UaO-H7-Zge">
+                                            <rect key="frame" x="0.0" y="0.0" width="478.5" height="478"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn identifier="" width="475.5" minWidth="40" maxWidth="1000" id="7z2-Eo-Jop">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <imageCell key="dataCell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="r8e-KU-Le8"/>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="XfG-lQ-9wD" id="KVc-Xa-vET"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Eos-3H-vmk">
+                                    <rect key="frame" x="1" y="463" width="478" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Lsz-Ve-b3e">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="UaO-H7-Zge" id="dR8-AA-vbX"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="102" y="438"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSTrashEmpty" width="32" height="32"/>
+    </resources>
 </document>

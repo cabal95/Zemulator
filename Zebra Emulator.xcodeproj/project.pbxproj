@@ -12,6 +12,9 @@
 		65A1575821554E77009DC910 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65A1575721554E77009DC910 /* Assets.xcassets */; };
 		65A1575B21554E77009DC910 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65A1575921554E77009DC910 /* Main.storyboard */; };
 		65A1575E21554E77009DC910 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A1575D21554E77009DC910 /* main.m */; };
+		65A1576721554EAA009DC910 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A1576621554EAA009DC910 /* CoreBluetooth.framework */; };
+		65A1576F215595B1009DC910 /* TCPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A1576E215595B1009DC910 /* TCPServer.m */; };
+		65A1577921598AE8009DC910 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A1577821598AE8009DC910 /* WindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +27,13 @@
 		65A1575A21554E77009DC910 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65A1575C21554E77009DC910 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65A1575D21554E77009DC910 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		65A1575F21554E77009DC910 /* Zebra_Emulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zebra_Emulator.entitlements; sourceTree = "<group>"; };
+		65A1576621554EAA009DC910 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		65A1576821555070009DC910 /* ZPrinterLEService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPrinterLEService.h; sourceTree = "<group>"; };
+		65A15769215566A1009DC910 /* Zebra Emulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Zebra Emulator.entitlements"; sourceTree = "<group>"; };
+		65A1576D215595B1009DC910 /* TCPServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCPServer.h; sourceTree = "<group>"; };
+		65A1576E215595B1009DC910 /* TCPServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCPServer.m; sourceTree = "<group>"; };
+		65A1577721598AE8009DC910 /* WindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
+		65A1577821598AE8009DC910 /* WindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A1576721554EAA009DC910 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +53,7 @@
 			children = (
 				65A1575021554E75009DC910 /* Zebra Emulator */,
 				65A1574F21554E75009DC910 /* Products */,
+				65A1576521554EAA009DC910 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,6 +68,7 @@
 		65A1575021554E75009DC910 /* Zebra Emulator */ = {
 			isa = PBXGroup;
 			children = (
+				65A15769215566A1009DC910 /* Zebra Emulator.entitlements */,
 				65A1575121554E75009DC910 /* AppDelegate.h */,
 				65A1575221554E75009DC910 /* AppDelegate.m */,
 				65A1575421554E76009DC910 /* ViewController.h */,
@@ -65,9 +77,21 @@
 				65A1575921554E77009DC910 /* Main.storyboard */,
 				65A1575C21554E77009DC910 /* Info.plist */,
 				65A1575D21554E77009DC910 /* main.m */,
-				65A1575F21554E77009DC910 /* Zebra_Emulator.entitlements */,
+				65A1576821555070009DC910 /* ZPrinterLEService.h */,
+				65A1576D215595B1009DC910 /* TCPServer.h */,
+				65A1576E215595B1009DC910 /* TCPServer.m */,
+				65A1577721598AE8009DC910 /* WindowController.h */,
+				65A1577821598AE8009DC910 /* WindowController.m */,
 			);
 			path = "Zebra Emulator";
+			sourceTree = "<group>";
+		};
+		65A1576521554EAA009DC910 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65A1576621554EAA009DC910 /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +125,11 @@
 				TargetAttributes = {
 					65A1574D21554E75009DC910 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -139,6 +168,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A1577921598AE8009DC910 /* WindowController.m in Sources */,
+				65A1576F215595B1009DC910 /* TCPServer.m in Sources */,
 				65A1575621554E76009DC910 /* ViewController.m in Sources */,
 				65A1575E21554E77009DC910 /* main.m in Sources */,
 				65A1575321554E75009DC910 /* AppDelegate.m in Sources */,
@@ -272,7 +303,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Zebra Emulator/Zebra_Emulator.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Zebra Emulator/Zebra Emulator.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = RKFW587ZZW;
@@ -281,6 +312,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.blueboxmoon.Zebra-Emulator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -290,7 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Zebra Emulator/Zebra_Emulator.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Zebra Emulator/Zebra Emulator.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = RKFW587ZZW;
@@ -299,6 +331,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.blueboxmoon.Zebra-Emulator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
