@@ -13,13 +13,16 @@ namespace Zemulator.Mac
 	partial class ViewController
 	{
 		[Outlet]
-		AppKit.NSTableView TableView { get; set; }
+		AppKit.NSStackView LabelStack { get; set; }
+
+		[Outlet]
+		MyView LabelView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TableView != null) {
-				TableView.Dispose ();
-				TableView = null;
+			if (LabelStack != null) {
+				LabelStack.Dispose ();
+				LabelStack = null;
 			}
 		}
 	}
