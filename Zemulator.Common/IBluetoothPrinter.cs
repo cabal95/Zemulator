@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ZE.Common
+namespace Zemulator.Common
 {
     /// <summary>
     /// Defines the interface that OS implementations must follow to provide

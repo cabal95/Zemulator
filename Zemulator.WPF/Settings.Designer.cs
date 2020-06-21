@@ -50,9 +50,9 @@ namespace Zebra_Emulator {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Density_203")]
-        public global::ZE.Common.LabelDensity PrintDensity {
+        public global::Zemulator.Common.LabelDensity PrintDensity {
             get {
-                return ((global::ZE.Common.LabelDensity)(this["PrintDensity"]));
+                return ((global::Zemulator.Common.LabelDensity)(this["PrintDensity"]));
             }
             set {
                 this["PrintDensity"] = value;

@@ -6,7 +6,7 @@ using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Foundation.Metadata;
 using Windows.Storage.Streams;
 
-using ZE.Common;
+using Zemulator.Common;
 
 namespace Zebra_Emulator
 {

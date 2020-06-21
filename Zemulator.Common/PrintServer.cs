@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Text;
 using System.Linq;
 
-namespace ZE.Common
+namespace Zemulator.Common
 {
     /// <summary>
     /// Handles receiving and processing label ZPL data over a raw

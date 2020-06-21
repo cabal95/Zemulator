@@ -6,7 +6,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-using ZE.Common;
+using Zemulator.Common;
 
 namespace Zebra_Emulator
 {

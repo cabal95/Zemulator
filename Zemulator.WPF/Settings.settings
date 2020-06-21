@@ -8,7 +8,7 @@
     <Setting Name="LabelHeight" Type="System.Double" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="PrintDensity" Type="ZE.Common.LabelDensity" Scope="User">
+    <Setting Name="PrintDensity" Type="Zemulator.Common.LabelDensity" Scope="User">
       <Value Profile="(Default)">Density_203</Value>
     </Setting>
   </Settings>

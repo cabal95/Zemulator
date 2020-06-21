@@ -1,4 +1,4 @@
-﻿namespace ZE.Common
+﻿namespace Zemulator.Common
 {
     /// <summary>
     /// Specifies the density to use when rendering a label.

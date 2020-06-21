@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-using ZE.Common;
+using Zemulator.Common;
 
 namespace Zebra_Emulator
 {

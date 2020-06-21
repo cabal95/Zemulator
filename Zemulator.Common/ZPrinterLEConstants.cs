@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ZE.Common
+namespace Zemulator.Common
 {
     public static class ZPrinterLEConstants
     {

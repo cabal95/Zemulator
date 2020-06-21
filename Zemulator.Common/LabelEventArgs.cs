@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace ZE.Common
+namespace Zemulator.Common
 {
     /// <summary>
     /// Provides the event information for the <see cref="PrintServer.OnLabelReceived"/> event.
