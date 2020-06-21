@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ZE.Common\ZE.Common.csproj" />
+    <ProjectReference Include="..\Zemulator.Common\Zemulator.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
