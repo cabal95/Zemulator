@@ -16,7 +16,7 @@ namespace Zemulator.Mac
 		AppKit.NSStackView LabelStack { get; set; }
 
 		[Outlet]
-		MyView LabelView { get; set; }
+		LabelStackView LabelView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
