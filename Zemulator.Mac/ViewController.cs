@@ -10,14 +10,37 @@ namespace Zemulator.Mac
 {
     public partial class ViewController : NSViewController
     {
+        #region Fields
+
+        /// <summary>
+        /// The label stack view that we will add all our labels to.
+        /// </summary>
         private LabelStackView _labelStackView;
 
+        /// <summary>
+        /// The print server that is handling label parsing and rendering.
+        /// </summary>
         private PrintServer _printServer;
 
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="ViewController"/> class.
+        /// </summary>
+        /// <param name="handle">The native handle to initialize with.</param>
         public ViewController( IntPtr handle ) : base( handle )
         {
         }
 
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Called when the <see cref="NSViewController.View"/> property has been set.
+        /// </summary>
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -70,6 +93,8 @@ namespace Zemulator.Mac
             _printServer.OnLabelReceived += PrintServer_OnLabelReceived;
             _printServer.Start();
         }
+
+        #endregion
 
         #region Event Handlers
 

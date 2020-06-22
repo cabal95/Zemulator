@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using AppKit;
+
 using CoreGraphics;
 
 namespace Zemulator.Mac
@@ -10,6 +12,17 @@ namespace Zemulator.Mac
     /// </summary>
     public class LabelStackView : NSView
     {
+        #region Fields
+
+        /// <summary>
+        /// The list of label views we track.
+        /// </summary>
+        private readonly List<NSImageView> _labelViews = new List<NSImageView>();
+
+        #endregion
+
+        #region Properties
+
         /// <summary>
         /// Indicate that we work in a flipped grid system where y=0 is the
         /// top of the view.
@@ -21,10 +34,7 @@ namespace Zemulator.Mac
         /// </summary>
         protected int LabelPadding => 12;
 
-        /// <summary>
-        /// The list of label views we track.
-        /// </summary>
-        private readonly List<NSImageView> _labelViews = new List<NSImageView>();
+        #endregion
 
         #region Constructors
 
@@ -39,6 +49,10 @@ namespace Zemulator.Mac
 
         #region Methods
 
+        /// <summary>
+        /// Add a new image label to the stack.
+        /// </summary>
+        /// <param name="labelImage">The label image to be added.</param>
         public void AddLabel( NSImage labelImage )
         {
             var imageView = new NSImageView
@@ -54,6 +68,9 @@ namespace Zemulator.Mac
             base.AddSubview( imageView );
         }
 
+        /// <summary>
+        /// Clear the contents of the stack.
+        /// </summary>
         public void ClearLabels()
         {
             while ( Subviews.Length > 0 )
@@ -64,11 +81,21 @@ namespace Zemulator.Mac
             _labelViews.Clear();
         }
 
+        /// <summary>
+        /// Add a new subview, not supported.
+        /// </summary>
+        /// <param name="aView"></param>
         public override void AddSubview( NSView aView )
         {
             throw new NotSupportedException( "Please use AddLabel method instead." );
         }
 
+        /// <summary>
+        /// Add a new subview, not supported.
+        /// </summary>
+        /// <param name="aView"></param>
+        /// <param name="place"></param>
+        /// <param name="otherView"></param>
         public override void AddSubview( NSView aView, NSWindowOrderingMode place, NSView otherView )
         {
             throw new NotSupportedException( "Please use AddLabel method instead." );
