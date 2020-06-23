@@ -4,6 +4,8 @@ using AppKit;
 
 using Foundation;
 
+using Microsoft.Extensions.DependencyInjection;
+
 using Zemulator.Common;
 
 namespace Zemulator.Mac
@@ -84,7 +86,11 @@ namespace Zemulator.Mac
             clipView.AddConstraint( clipView.TopAnchor.ConstraintEqualToAnchor( _labelStackView.TopAnchor ) );
             clipView.AddConstraint( clipView.RightAnchor.ConstraintEqualToAnchor( _labelStackView.RightAnchor ) );
 
-            _printServer = new PrintServer()
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<IBluetoothPrinter, MacBluetoothPrinter>()
+                .AddSingleton<ITimer, MacTimer>()
+                .BuildServiceProvider();
+            _printServer = new PrintServer( serviceProvider )
             {
                 LabelHeight = 2,
                 LabelWidth = 4,

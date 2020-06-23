@@ -10,6 +10,8 @@ using System.Net.Http;
 using System.Text;
 using System.Linq;
 
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Zemulator.Common
 {
     /// <summary>
@@ -38,7 +40,7 @@ namespace Zemulator.Common
         /// <summary>
         /// The bluetooth printer.
         /// </summary>
-        private readonly IBluetoothPrinter _bluetoothPrinter;
+        private IBluetoothPrinter _bluetoothPrinter;
 
         /// <summary>
         /// The client that we use to connect to Labelary for rendering.
@@ -58,10 +60,23 @@ namespace Zemulator.Common
         /// <summary>
         /// The ZPL semaphore that indicates when a new label is in the queue.
         /// </summary>
-        private readonly SemaphoreSlim _zplSemaphore = new SemaphoreSlim( 1 );
+        private readonly SemaphoreSlim _zplSemaphore = new SemaphoreSlim( 0 );
 
+        /// <summary>
+        /// The bluetooth data that has been received so far.
+        /// </summary>
         private string _bluetoothData = string.Empty;
+
+        /// <summary>
+        /// Lock object to ensure that we process bluetooth data on a single
+        /// thread.
+        /// </summary>
         private readonly object _bluetoothDataLock = new object();
+
+        /// <summary>
+        /// The provider of all the services we require.
+        /// </summary>
+        private readonly IServiceProvider _serviceProvider;
 
         #endregion
 
@@ -95,14 +110,13 @@ namespace Zemulator.Common
 
         #region Constructors
 
-        public PrintServer()
+        /// <summary>
+        /// Creates a new instance of the <see cref="PrintServer"/> class.
+        /// </summary>
+        /// <param name="serviceProvider">The object that provides all the services we need.</param>
+        public PrintServer( IServiceProvider serviceProvider )
         {
-        }
-
-        public PrintServer( IBluetoothPrinter bluetoothPrinter )
-            : this()
-        {
-            _bluetoothPrinter = bluetoothPrinter;
+            _serviceProvider = serviceProvider;
         }
 
         #endregion
@@ -118,6 +132,7 @@ namespace Zemulator.Common
             _listener.Start();
 
             _bluetoothData = string.Empty;
+            _bluetoothPrinter = _serviceProvider.GetService<IBluetoothPrinter>();
             _bluetoothPrinter?.Start( data => ReceivedBluetoothData( data ) );
 
             Task.Run( ConnectionTask );
@@ -131,19 +146,23 @@ namespace Zemulator.Common
         {
             _cancelSource.Cancel();
             _bluetoothPrinter?.Stop();
+            _bluetoothPrinter = null;
             _listener.Stop();
         }
 
+        /// <summary>
+        /// We received a chunk of data from a bluetooth connection.
+        /// </summary>
+        /// <param name="data">The data that was received.</param>
         private void ReceivedBluetoothData( byte[] data )
         {
             lock ( _bluetoothDataLock )
             {
                 _bluetoothData += Encoding.UTF8.GetString( data );
-                System.Diagnostics.Debug.WriteLine($"Appending {data.Length} bytes to BL data.");
 
                 while ( true )
                 {
-                    var endIndex = _bluetoothData.ToString().IndexOf( "^XZ" );
+                    var endIndex = _bluetoothData.ToString().IndexOf( "^XZ", StringComparison.InvariantCultureIgnoreCase );
                     if ( endIndex < 0 )
                     {
                         break;
@@ -154,7 +173,6 @@ namespace Zemulator.Common
 
                     using ( var ms = new MemoryStream( Encoding.UTF8.GetBytes( labelData ) ) )
                     {
-                        System.Diagnostics.Debug.WriteLine("Submitted 1 BLE label.");
                         ProcessLabelData( ms );
                     }
                 }
@@ -179,8 +197,8 @@ namespace Zemulator.Common
                 //
                 // Deal with multiple labels sent.
                 //
-                var labels = dataString.Split( new string[] { "^XZ" }, StringSplitOptions.None )
-                    .Where( a => a.Contains( "^XA" ) )
+                var labels = dataString.Split( new string[] { "^xz", "^Xz", "^xZ", "^XZ" }, StringSplitOptions.None )
+                    .Where( a => a.IndexOf( "^XA", StringComparison.InvariantCultureIgnoreCase ) >= 0 )
                     .Select( a => a + "^XZ" )
                     .ToList();
 
@@ -233,30 +251,35 @@ namespace Zemulator.Common
         /// </summary>
         private async Task RenderTask()
         {
+            DateTime throttleDate = DateTime.Now;
+
             while ( !_cancelSource.Token.IsCancellationRequested )
             {
                 await _zplSemaphore.WaitAsync( _cancelSource.Token );
-                string zplLabel;
 
                 while ( true )
                 {
-                    await Task.Delay(250);
-
                     //
                     // Try to get the next label.
                     //
+                    string zplLabel;
                     lock ( _zplLabels )
                     {
                         if ( _zplLabels.Count > 0 )
                         {
                             zplLabel = _zplLabels.Dequeue();
-                            System.Diagnostics.Debug.WriteLine("Dequeued 1 ZPL label: " + _zplLabels.Count.ToString());
                         }
                         else
                         {
                             break;
                         }
                     }
+
+                    //
+                    // Mac will sometimes put the app to sleep if it isn't
+                    // in the foreground, so Task.Delay does not work.
+                    //
+                    await _serviceProvider.GetRequiredService<ITimer>().WaitUntil( throttleDate );
 
                     try
                     {
@@ -267,23 +290,27 @@ namespace Zemulator.Common
                         var content = new StreamContent( new MemoryStream( Encoding.UTF8.GetBytes( zplLabel ) ) );
                         var response = await _labelaryClient.PostAsync( uri, content, _cancelSource.Token );
 
-                        if (!response.IsSuccessStatusCode)
+                        if ( !response.IsSuccessStatusCode )
                         {
                             var msg = await response.Content.ReadAsStringAsync();
-                            System.Diagnostics.Debug.WriteLine($"Failed to retrieve ZPL label: {msg}");
+                            System.Diagnostics.Debug.WriteLine( $"Failed to retrieve ZPL label: {msg}" );
                         }
                         else
                         {
                             var imageStream = await response.Content.ReadAsStreamAsync();
 
-                            System.Diagnostics.Debug.WriteLine("Rendered 1 ZPL label.");
-                            OnLabelReceived.Invoke(this, new LabelEventArgs(imageStream));
+                            OnLabelReceived.Invoke( this, new LabelEventArgs( imageStream ) );
                         }
                     }
                     catch ( Exception ex )
                     {
                         System.Diagnostics.Debug.WriteLine( $"Failed to retrieve ZPL label: {ex.Message}" );
                     }
+
+                    //
+                    // Labelary limits to 5 requests per second.
+                    //
+                    throttleDate = DateTime.Now.AddMilliseconds( 200 );
                 }
             }
         }
