@@ -336,11 +336,11 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Zemulator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="320" height="240"/>
                         <toolbar key="toolbar" implicitIdentifier="77E321B6-D8F6-44EB-8015-7957DDBC146B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="vpD-xW-XlQ">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="C2e-5h-gZA"/>
@@ -401,6 +401,161 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
+        </scene>
+        <!--Settings Controller-->
+        <scene sceneID="HgR-kD-XgY">
+            <objects>
+                <customObject id="pSZ-hn-rrM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController id="s7u-w5-9df" customClass="SettingsController" sceneMemberID="viewController">
+                    <view key="view" id="DJB-Hc-hGL">
+                        <rect key="frame" x="0.0" y="0.0" width="282" height="123"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1f9-ZT-QtM">
+                                <rect key="frame" x="18" y="87" width="104" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="ogf-rA-9Wq"/>
+                                    <constraint firstAttribute="height" constant="16" id="sNs-Z7-Sm9"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label Width" id="xRo-W4-k7k">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HMn-hn-7Yv">
+                                <rect key="frame" x="18" y="25" width="104" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="vOo-ik-lfa"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Print Density" id="HDi-sG-clT">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EYT-pB-IK4">
+                                <rect key="frame" x="129" y="82" width="136" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="7HC-MQ-Ioj"/>
+                                    <constraint firstAttribute="height" constant="21" id="KnL-YO-0i1"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="FGk-qT-yrT" id="69O-wQ-VP2">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <menu key="menu" id="L6O-r7-nJu">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="FGk-qT-yrT"/>
+                                            <menuItem title="Item 2" id="Kj4-DK-SCR"/>
+                                            <menuItem title="Item 3" id="P0P-2q-9s0"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="LabelWidthChanged:" target="s7u-w5-9df" id="sBo-9b-IOj"/>
+                                </connections>
+                            </popUpButton>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Tq-cb-b7L">
+                                <rect key="frame" x="129" y="51" width="136" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="GE6-3P-wyk"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="r4m-Wr-KMC" id="yEp-dr-DIc">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <menu key="menu" id="hbM-rV-QD7">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="r4m-Wr-KMC"/>
+                                            <menuItem title="Item 2" id="RrI-zu-k5U"/>
+                                            <menuItem title="Item 3" id="qjP-wb-koj"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="LabelHeightChanged:" target="s7u-w5-9df" id="yRb-bU-0JH"/>
+                                </connections>
+                            </popUpButton>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S8U-za-vQU">
+                                <rect key="frame" x="129" y="20" width="136" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Ixr-ez-96U"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="0kF-37-EDA" id="agQ-Bg-0DB">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <menu key="menu" id="EO1-SH-5CR">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="0kF-37-EDA"/>
+                                            <menuItem title="Item 2" id="Dsv-Kl-Jj0"/>
+                                            <menuItem title="Item 3" id="i8N-DG-tf5"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="PrintDensityChanged:" target="s7u-w5-9df" id="8Op-xT-BaQ"/>
+                                </connections>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IZ6-2R-rbc">
+                                <rect key="frame" x="18" y="56" width="104" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="gkw-IY-g2n"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label Height" id="q3V-Bs-QXK">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="S8U-za-vQU" firstAttribute="centerY" secondItem="HMn-hn-7Yv" secondAttribute="centerY" id="5Fa-vk-e06"/>
+                            <constraint firstItem="2Tq-cb-b7L" firstAttribute="centerY" secondItem="IZ6-2R-rbc" secondAttribute="centerY" id="6iy-NP-xF8"/>
+                            <constraint firstItem="EYT-pB-IK4" firstAttribute="leading" secondItem="1f9-ZT-QtM" secondAttribute="trailing" constant="11" id="9do-xM-QvX"/>
+                            <constraint firstItem="2Tq-cb-b7L" firstAttribute="width" secondItem="EYT-pB-IK4" secondAttribute="width" id="CMN-7j-m9e"/>
+                            <constraint firstItem="1f9-ZT-QtM" firstAttribute="leading" secondItem="DJB-Hc-hGL" secondAttribute="leading" constant="20" id="CQ7-bq-XpB"/>
+                            <constraint firstItem="IZ6-2R-rbc" firstAttribute="top" secondItem="1f9-ZT-QtM" secondAttribute="bottom" constant="15" id="F8N-IY-TSt"/>
+                            <constraint firstItem="HMn-hn-7Yv" firstAttribute="leading" secondItem="IZ6-2R-rbc" secondAttribute="leading" id="Kl9-Jr-8O7"/>
+                            <constraint firstItem="EYT-pB-IK4" firstAttribute="centerY" secondItem="1f9-ZT-QtM" secondAttribute="centerY" id="MWx-Op-cge"/>
+                            <constraint firstItem="1f9-ZT-QtM" firstAttribute="top" secondItem="DJB-Hc-hGL" secondAttribute="top" constant="20" id="OFJ-jc-Huo"/>
+                            <constraint firstItem="HMn-hn-7Yv" firstAttribute="width" secondItem="IZ6-2R-rbc" secondAttribute="width" id="e6q-CP-72Q"/>
+                            <constraint firstItem="IZ6-2R-rbc" firstAttribute="leading" secondItem="1f9-ZT-QtM" secondAttribute="leading" id="rC9-y6-jMr"/>
+                            <constraint firstItem="2Tq-cb-b7L" firstAttribute="leading" secondItem="EYT-pB-IK4" secondAttribute="leading" id="sRH-jD-dCR"/>
+                            <constraint firstItem="HMn-hn-7Yv" firstAttribute="top" secondItem="IZ6-2R-rbc" secondAttribute="bottom" constant="15" id="tU7-9D-AAL"/>
+                            <constraint firstItem="S8U-za-vQU" firstAttribute="width" secondItem="2Tq-cb-b7L" secondAttribute="width" id="vU7-ic-bM6"/>
+                            <constraint firstItem="S8U-za-vQU" firstAttribute="leading" secondItem="2Tq-cb-b7L" secondAttribute="leading" id="xGm-bG-rw3"/>
+                            <constraint firstItem="IZ6-2R-rbc" firstAttribute="width" secondItem="1f9-ZT-QtM" secondAttribute="width" id="zCu-eB-4QQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="LabelHeightButton" destination="2Tq-cb-b7L" id="2Cm-Vd-Rl1"/>
+                        <outlet property="LabelWidthButton" destination="EYT-pB-IK4" id="nmu-hq-RHC"/>
+                        <outlet property="PrintDensityButton" destination="S8U-za-vQU" id="jcO-X9-KEU"/>
+                    </connections>
+                </viewController>
+                <userDefaultsController id="bpR-th-gLc"/>
+            </objects>
+            <point key="canvasLocation" x="578" y="1144"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="t7V-RH-glj">
+            <objects>
+                <windowController storyboardIdentifier="Settings" id="fkv-1x-Jc2" sceneMemberID="viewController">
+                    <window key="window" title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ecC-Cs-K1a">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="fkv-1x-Jc2" id="FPD-IP-l0u"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="s7u-w5-9df" kind="relationship" relationship="window.shadowedContentViewController" id="Rqn-mC-x0W"/>
+                    </connections>
+                </windowController>
+                <customObject id="1fr-x7-j9q" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16" y="1170"/>
         </scene>
     </scenes>
     <resources>

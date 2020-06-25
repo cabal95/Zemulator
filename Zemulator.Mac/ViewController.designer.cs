@@ -12,18 +12,8 @@ namespace Zemulator.Mac
 	[Register ("ViewController")]
 	partial class ViewController
 	{
-		[Outlet]
-		AppKit.NSStackView LabelStack { get; set; }
-
-		[Outlet]
-		LabelStackView LabelView { get; set; }
-		
 		void ReleaseDesignerOutlets ()
 		{
-			if (LabelStack != null) {
-				LabelStack.Dispose ();
-				LabelStack = null;
-			}
 		}
 	}
 }

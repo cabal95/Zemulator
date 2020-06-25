@@ -85,6 +85,10 @@
     <Compile Include="MacTimer.cs" />
     <Compile Include="GuidExtensions.cs" />
     <Compile Include="MacBluetoothPrinter.cs" />
+    <Compile Include="SettingsController.cs" />
+    <Compile Include="SettingsController.designer.cs">
+      <DependentUpon>SettingsController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />

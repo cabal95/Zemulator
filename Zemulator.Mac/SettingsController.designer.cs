@@ -12,9 +12,40 @@ namespace Zemulator.Mac
 	[Register ("SettingsController")]
 	partial class SettingsController
 	{
+		[Outlet]
+		AppKit.NSPopUpButton LabelHeightButton { get; set; }
+
+		[Outlet]
+		AppKit.NSPopUpButton LabelWidthButton { get; set; }
+
+		[Outlet]
+		AppKit.NSPopUpButton PrintDensityButton { get; set; }
+
+		[Action ("LabelHeightChanged:")]
+		partial void LabelHeightChanged (Foundation.NSObject sender);
+
+		[Action ("LabelWidthChanged:")]
+		partial void LabelWidthChanged (Foundation.NSObject sender);
+
+		[Action ("PrintDensityChanged:")]
+		partial void PrintDensityChanged (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (LabelWidthButton != null) {
+				LabelWidthButton.Dispose ();
+				LabelWidthButton = null;
+			}
+
+			if (LabelHeightButton != null) {
+				LabelHeightButton.Dispose ();
+				LabelHeightButton = null;
+			}
+
+			if (PrintDensityButton != null) {
+				PrintDensityButton.Dispose ();
+				PrintDensityButton = null;
+			}
 		}
 	}
 }

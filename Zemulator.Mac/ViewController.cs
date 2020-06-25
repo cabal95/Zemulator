@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using AppKit;
 
@@ -10,6 +11,9 @@ using Zemulator.Common;
 
 namespace Zemulator.Mac
 {
+    /// <summary>
+    /// The main content view controller.
+    /// </summary>
     public partial class ViewController : NSViewController
     {
         #region Fields
@@ -23,6 +27,11 @@ namespace Zemulator.Mac
         /// The print server that is handling label parsing and rendering.
         /// </summary>
         private PrintServer _printServer;
+
+        /// <summary>
+        /// Any KVO observers we have that must be freed later.
+        /// </summary>
+        private List<IDisposable> _settingsObservers;
 
         #endregion
 
@@ -39,6 +48,24 @@ namespace Zemulator.Mac
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// The view controller is about to be disposed. Free any resources.
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected override void Dispose( bool disposing )
+        {
+            base.Dispose( disposing );
+
+            if ( _settingsObservers != null )
+            {
+                foreach ( var observer in _settingsObservers )
+                {
+                    observer.Dispose();
+                }
+                _settingsObservers = null;
+            }
+        }
 
         /// <summary>
         /// Called when the <see cref="NSViewController.View"/> property has been set.
@@ -86,15 +113,30 @@ namespace Zemulator.Mac
             clipView.AddConstraint( clipView.TopAnchor.ConstraintEqualToAnchor( _labelStackView.TopAnchor ) );
             clipView.AddConstraint( clipView.RightAnchor.ConstraintEqualToAnchor( _labelStackView.RightAnchor ) );
 
+            //
+            // Observe any changes to the user defaults so we can update
+            // the print server.
+            //
+            var defaults = NSUserDefaults.StandardUserDefaults;
+            _settingsObservers = new List<IDisposable>
+            {
+                defaults.AddObserver( SettingsController.LabelWidthKey, 0, _ => SettingChanged( SettingsController.LabelWidthKey ) ),
+                defaults.AddObserver( SettingsController.LabelHeightKey, 0, _ => SettingChanged( SettingsController.LabelWidthKey ) ),
+                defaults.AddObserver( SettingsController.PrintDensityKey, 0, _ => SettingChanged( SettingsController.PrintDensityKey ) )
+            };
+
+            //
+            // Create and start the print server.
+            //
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IBluetoothPrinter, MacBluetoothPrinter>()
                 .AddSingleton<ITimer, MacTimer>()
                 .BuildServiceProvider();
             _printServer = new PrintServer( serviceProvider )
             {
-                LabelHeight = 2,
-                LabelWidth = 4,
-                Density = LabelDensity.Density_203
+                LabelWidth = NSUserDefaults.StandardUserDefaults.DoubleForKey( SettingsController.LabelWidthKey ),
+                LabelHeight = NSUserDefaults.StandardUserDefaults.DoubleForKey( SettingsController.LabelHeightKey ),
+                Density = ( LabelDensity ) ( int ) NSUserDefaults.StandardUserDefaults.IntForKey( SettingsController.PrintDensityKey )
             };
             _printServer.OnLabelReceived += PrintServer_OnLabelReceived;
             _printServer.Start();
@@ -103,6 +145,34 @@ namespace Zemulator.Mac
         #endregion
 
         #region Event Handlers
+
+        /// <summary>
+        /// A user preferene setting has changed. Update any UI or print
+        /// server properties.
+        /// </summary>
+        /// <param name="settingKey">The name of the setting.</param>
+        private void SettingChanged( string settingKey )
+        {
+            var defaults = NSUserDefaults.StandardUserDefaults;
+
+            if ( _printServer == null )
+            {
+                return;
+            }
+
+            if ( settingKey == SettingsController.LabelWidthKey )
+            {
+                _printServer.LabelWidth = defaults.DoubleForKey( SettingsController.LabelWidthKey );
+            }
+            else if ( settingKey == SettingsController.LabelHeightKey )
+            {
+                _printServer.LabelHeight = defaults.DoubleForKey( SettingsController.LabelHeightKey );
+            }
+            else if ( settingKey == SettingsController.PrintDensityKey )
+            {
+                _printServer.Density = ( LabelDensity ) ( int ) defaults.DoubleForKey( SettingsController.PrintDensityKey );
+            }
+        }
 
         /// <summary>
         /// Handles the OnLabelReceived event of the PrintServer object.
@@ -138,6 +208,9 @@ namespace Zemulator.Mac
         [Action( "openSettings:" )]
         public void OpenSettings( NSObject sender )
         {
+            var settingsController = Storyboard.InstantiateControllerWithIdentifier( "Settings" ) as NSWindowController;
+
+            settingsController.ShowWindow( this );
         }
 
         /// <summary>
