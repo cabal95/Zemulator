@@ -104,7 +104,36 @@ namespace Zemulator.Common
         /// <value>
         /// The density to use when rendering the labels.
         /// </value>
-        public LabelDensity Density { get; set; } = LabelDensity.Density_203;
+        public LabelDensity Density
+        {
+            get => _density;
+            set
+            {
+                _density = value;
+
+
+                switch ( _density )
+                {
+                    case LabelDensity.Density_152:
+                        _printDensityPitch = "6dpmm";
+                        break;
+
+                    case LabelDensity.Density_203:
+                        _printDensityPitch = "8dpmm";
+                        break;
+
+                    case LabelDensity.Density_300:
+                        _printDensityPitch = "12dpmm";
+                        break;
+
+                    case LabelDensity.Density_600:
+                        _printDensityPitch = "24dpmm";
+                        break;
+                }
+            }
+        }
+        private LabelDensity _density = LabelDensity.Density_203;
+        private string _printDensityPitch = "8dpmm";
 
         #endregion
 
@@ -286,7 +315,7 @@ namespace Zemulator.Common
                         //
                         // Request Labelary to render the label for us.
                         //
-                        var uri = new Uri( $"http://api.labelary.com/v1/printers/8dpmm/labels/{LabelWidth}x{LabelHeight}/0/" );
+                        var uri = new Uri( $"http://api.labelary.com/v1/printers/{_printDensityPitch}/labels/{LabelWidth}x{LabelHeight}/0/" );
                         var content = new StreamContent( new MemoryStream( Encoding.UTF8.GetBytes( zplLabel ) ) );
                         var response = await _labelaryClient.PostAsync( uri, content, _cancelSource.Token );
 
