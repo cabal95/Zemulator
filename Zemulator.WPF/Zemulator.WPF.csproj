@@ -7,6 +7,9 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>Zemulator</AssemblyName>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
+    <Version>2.0.0</Version>
+    <Company>Blue Box Moon</Company>
+    <PackageId>BlueBoxMoon.Zemulator.WPF</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
