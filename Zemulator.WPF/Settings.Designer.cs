@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Zebra_Emulator {
+namespace Zemulator.WPF {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

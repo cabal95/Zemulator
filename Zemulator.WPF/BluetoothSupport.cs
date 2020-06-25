@@ -1,4 +1,4 @@
-﻿namespace Zebra_Emulator
+namespace Zemulator.WPF
 {
     public enum BluetoothSupport
     {

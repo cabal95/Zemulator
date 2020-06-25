@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 
 using Windows.Devices.Bluetooth;
@@ -8,7 +8,7 @@ using Windows.Storage.Streams;
 
 using Zemulator.Common;
 
-namespace Zebra_Emulator
+namespace Zemulator.WPF
 {
     public class WindowsBluetoothPrinter : IBluetoothPrinter
     {

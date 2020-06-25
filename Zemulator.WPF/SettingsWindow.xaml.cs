@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 using Zemulator.Common;
 
-namespace Zebra_Emulator
+namespace Zemulator.WPF
 {
     /// <summary>
     /// Interaction logic for Settings.xaml

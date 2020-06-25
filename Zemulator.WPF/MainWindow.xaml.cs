@@ -1,14 +1,14 @@
-﻿using System;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
+using Microsoft.Extensions.DependencyInjection;
+
 using Zemulator.Common;
 
-namespace Zebra_Emulator
+namespace Zemulator.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -26,7 +26,11 @@ namespace Zebra_Emulator
 
             Settings.Default.PropertyChanged += Settings_PropertyChanged;
 
-            _printServer = new PrintServer( new WindowsBluetoothPrinter() )
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<IBluetoothPrinter, WindowsBluetoothPrinter>()
+                .AddSingleton<ITimer, WindowsTimer>()
+                .BuildServiceProvider();
+            _printServer = new PrintServer( serviceProvider )
             {
                 LabelWidth = Settings.Default.LabelWidth,
                 LabelHeight = Settings.Default.LabelHeight
