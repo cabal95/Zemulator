@@ -8,6 +8,6 @@ Labels are rendered via the wonderful [Labelary](http://labelary.com/viewer.html
 
 You can adjust the emulated details of the printer, such as label size, in the settings panel.
 
-![Mac Sample](https://raw.githubusercontent.com/cabal95/Zebra-Emulator/master/Docs/MainWindow-Mac.jpg)
+![Mac Sample](https://raw.githubusercontent.com/cabal95/Zemulator/master/Docs/MainWindow-Mac.jpg)
 
-![Windows Sample](https://raw.githubusercontent.com/cabal95/Zebra-Emulator/master/Docs/MainWindow-Windows.jpg)
+![Windows Sample](https://raw.githubusercontent.com/cabal95/Zemulator/master/Docs/MainWindow-Windows.jpg)
