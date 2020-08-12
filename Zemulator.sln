@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zemulator", "Zemulator.WPF\Zemulator.WPF.csproj", "{102E6910-B8DB-4C97-B8F2-913D115FA6FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zemulator.WPF", "Zemulator.WPF\Zemulator.WPF.csproj", "{102E6910-B8DB-4C97-B8F2-913D115FA6FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zemulator.Common", "Zemulator.Common\Zemulator.Common.csproj", "{A32F2A4C-F593-4F45-80BB-190470DA25E7}"
 EndProject
