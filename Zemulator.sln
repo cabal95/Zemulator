@@ -5,9 +5,15 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zemulator.WPF", "Zemulator.WPF\Zemulator.WPF.csproj", "{102E6910-B8DB-4C97-B8F2-913D115FA6FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zemulator.Common", "Zemulator.Common\Zemulator.Common.csproj", "{A32F2A4C-F593-4F45-80BB-190470DA25E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zemulator.Common", "Zemulator.Common\Zemulator.Common.csproj", "{A32F2A4C-F593-4F45-80BB-190470DA25E7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zemulator.Mac", "Zemulator.Mac\Zemulator.Mac.csproj", "{78F781B0-FAD8-4D51-9AAF-1B68AD5A38B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{871F05BB-9EBD-4659-B15A-020EA6D1D8A8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
