@@ -41,7 +41,7 @@
             </Grid.Background>
             <ScrollViewer Name="mainScroller"
                           HorizontalScrollBarVisibility="Hidden"
-                          Padding="20,20,20,20">
+                          Padding="20,0,20,0">
                 <StackPanel x:Name="spLabels"
                             Width="{Binding ViewportWidth, ElementName=mainScroller}"
                             VerticalAlignment="Top"

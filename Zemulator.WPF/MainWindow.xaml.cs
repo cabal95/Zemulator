@@ -79,7 +79,7 @@ namespace Zemulator.WPF
                 var image = new Image()
                 {
                     Source = imageSource,
-                    Margin = new Thickness( 0, 0, 0, 0 ),
+                    Margin = new Thickness( 0, 20, 0, 20 ),
                     Stretch = Stretch.Uniform,
                     StretchDirection = StretchDirection.DownOnly
                 };
@@ -88,7 +88,7 @@ namespace Zemulator.WPF
 
                 if ( spLabels.Children.Count > 0 )
                 {
-                    ( ( Image ) spLabels.Children[0] ).Margin = new Thickness( 0, 20, 0, 0 );
+                    ( ( Image ) spLabels.Children[0] ).Margin = new Thickness( 0, 0, 0, 20 );
                 }
 
                 spLabels.Children.Insert( 0, image );
