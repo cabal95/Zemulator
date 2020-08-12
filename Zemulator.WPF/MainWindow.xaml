@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
-        Title="Zebra Emulator"
+        Title="Zemulator"
         Width="600"
         Height="450"
         MinWidth="320"
