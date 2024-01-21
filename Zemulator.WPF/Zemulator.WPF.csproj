@@ -1,13 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <RootNamespace>Zemulator.WPF</RootNamespace>
     <UseWPF>true</UseWPF>
     <AssemblyName>Zemulator</AssemblyName>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
     <Company>Blue Box Moon</Company>
     <PackageId>BlueBoxMoon.Zemulator.WPF</PackageId>
     <Authors>Daniel Hazelbaker</Authors>
@@ -16,7 +16,6 @@
   <ItemGroup>
     <PackageReference Include="FontAwesome5" Version="2.0.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
   </ItemGroup>
 
   <ItemGroup>
