@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -337,9 +337,9 @@ namespace Zemulator.Common
                     }
 
                     //
-                    // Labelary limits to 5 requests per second.
+                    // Labelary limits to 3 requests per second.
                     //
-                    throttleDate = DateTime.Now.AddMilliseconds( 200 );
+                    throttleDate = DateTime.Now.AddMilliseconds( 350 );
                 }
             }
         }
