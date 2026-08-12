@@ -11,6 +11,9 @@
     <Company>Blue Box Moon</Company>
     <PackageId>BlueBoxMoon.Zemulator.WPF</PackageId>
     <Authors>Daniel Hazelbaker</Authors>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>
